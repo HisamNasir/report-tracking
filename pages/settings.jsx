@@ -1,8 +1,13 @@
+import Layout from '@/components/Layout'
 import React from 'react'
 
 const Settings = () => {
   return (
-    <div>Settings</div>
+    <Layout>
+        <div className='container'>
+            Settings
+        </div>
+    </Layout>
   )
 }
 

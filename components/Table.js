@@ -26,7 +26,7 @@ function Table() {
   const currentData = data.slice(startIndex, endIndex);
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto p-4  flex flex-col">
       <table className="table-auto w-full">
         <thead>
           <tr>
@@ -57,7 +57,7 @@ function Table() {
         </tbody>
       </table>
 
-      <div className="mt-4 flex justify-between">
+      <div className="mt-4 flex items-end justify-between">
         <button
           onClick={previousPage}
           disabled={currentPage === 1}

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { useState } from "react";
+import { FaAdjust, FaBolt, FaHouseUser, FaUser } from "react-icons/fa";
 
 const Layout = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -14,62 +15,68 @@ const Layout = ({ children }) => {
 
   return (
     <div className="flex h-screen">
-      <div
-        className={`${
-          sidebarOpen ? "w-full" : "w-1/4 hidden md:block"
-        } h-screen bg-gray-800 text-white p-4`}
-      >
-        <button onClick={closeSidebar} className="md:hidden text-white ml-4">
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path d="M6 18L18 6M6 6l12 12"></path>
-          </svg>
-        </button>
-        <div className="mb-4">
-          <div className="font-bold mb-2">Options</div>
-          <ul>
-            <li>
-              <a href="#">Option 1</a>
-            </li>
-            <li>
-              <a href="#">Option 2</a>
-            </li>
-          </ul>
-        </div>
+ <div className="w-80 h-screen bg-gray-800 text-white ">
+      <div className="mb-4">
+        <div className="font-bold mb-2 text-xl bg-slate-700 px-2 py-5">Options</div>
+        <ul className=" space-y-4 text-xl p-4">
+          <li className="flex items-center">
+            <FaHouseUser className="mr-2" />
+            <a href="#">Home</a>
+          </li>
+          <li className="flex items-center">
+            <FaAdjust className="mr-2" />
+            <a href="#">Settings</a>
+          </li>
+          <li className="relative group">
+            <div className=" flex items-center">
+            <FaUser className="" />
+            <a href="#">Users</a>
+
+            </div>
+            <ul className="absolute left-12 top-0 hidden group-hover:block bg-gray-700 p-2">
+              <li>
+                <a href="#">All Users</a>
+              </li>
+              <li>
+                <a href="#">Active Users</a>
+              </li>
+              <li>
+                <a href="#">Inactive Users</a>
+              </li>
+            </ul>
+          </li>
+          {/* Add more sidebar options as needed */}
+        </ul>
       </div>
+    </div>
 
       <div className={`w-full h-screen ${sidebarOpen ? "md:pl-64" : ""}`}>
         <nav>
-        <header class="text-gray-400 bg-gray-900 body-font">
-  <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-    <a class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full" viewBox="0 0 24 24">
-        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-      </svg>
-      <span class="ml-3 text-xl">Tailblocks</span>
-    </a>
-    <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-700	flex flex-wrap items-center text-base justify-center">
-      <a class="mr-5 hover:text-white">First Link</a>
-      <a class="mr-5 hover:text-white">Second Link</a>
-      <a class="mr-5 hover:text-white">Third Link</a>
-      <a class="mr-5 hover:text-white">Fourth Link</a>
+        <header  className="text-gray-400 bg-gray-900 body-font">
+  <div  className="container mx-auto w-fill flex flex-wrap p-5 flex-col md:flex-row items-center">
+    <Link href={'/'}  className="flex title-font font-medium items-center text-white mb-4 md:mb-0">
+
+      <span  className="ml-3 text-xl flex items-center gap-2"><FaBolt/> Flash App</span>
+    </Link>
+    <nav  className="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-700	flex flex-wrap items-center text-base justify-center">
+      <div>
+      <Link href={'/'}  className="mr-5 hover:text-white">Home</Link>
+      <Link href={'/settings'}  className="mr-5 hover:text-white">settings</Link>
+
+      </div>
+      <div className="">
+        <FaUser/>
+      </div>
+
     </nav>
-    <button class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0">Button
-      <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
-        <path d="M5 12h14M12 5l7 7-7 7"></path>
-      </svg>
-    </button>
+
   </div>
 </header>
         </nav>
+        <div className="p-2">
+
         {children}
+        </div>
       </div>
     </div>
   );
